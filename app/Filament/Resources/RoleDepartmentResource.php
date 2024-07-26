@@ -21,8 +21,7 @@ class RoleDepartmentResource extends Resource
 {
     protected static ?string $model = RoleDepartment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
     protected static ?string $navigationGroup = 'Position';
     protected static ?int $navigationSort = 3;
 
@@ -38,8 +37,9 @@ class RoleDepartmentResource extends Resource
                         ->preload()
                         ->required(),
                     Forms\Components\Select::make('user_id')
+                        ->unique(ignoreRecord: true)
                         ->label('User')
-                        ->options(User::whereNotIn('role_id', [1, 2])->orWhereNull('role_id')->pluck('name', 'id'))
+                        ->options(User::whereNotIn('role_id', [1, 2])->orWhereNull('role_id')->pluck('email', 'id'))
                         ->searchable()
                         ->preload()
                         ->required(),

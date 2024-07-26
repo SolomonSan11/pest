@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('frequencies', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

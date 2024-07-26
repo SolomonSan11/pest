@@ -50,11 +50,10 @@ class ServiceLocationResource extends Resource
             ->schema([
                 Section::make('Location Details')->schema([
                     Forms\Components\TextInput::make('user')
-                        ->label('User Name')
+                        ->label('Customer Name')
                         ->maxLength(255)
                         ->required(),
                     Forms\Components\DatePicker::make('date')
-                        // ->native(false)
                         ->afterOrEqual(today())
                         ->displayFormat('d/m/Y'),
                     Forms\Components\Select::make('sector')
@@ -108,8 +107,10 @@ class ServiceLocationResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make()->outlined()->button(),
+                // Tables\Actions\ViewAction::make()->outlined()->button(),
                 Tables\Actions\EditAction::make()->outlined()->button(),
+                Tables\Actions\DeleteAction::make()->outlined()->button(),
+                Tables\Actions\DeleteAction::make()->outlined()->button(),
                 Tables\Actions\DeleteAction::make()->outlined()->button(),
             ])
             ->bulkActions([
